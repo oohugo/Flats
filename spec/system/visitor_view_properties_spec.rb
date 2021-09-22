@@ -39,6 +39,23 @@ describe 'Visitor view Home' do
     expect(page).to have_text('Banheiros: 2')
     expect(page).to have_text('Aceita Pets: Sim')
     expect(page).to have_text('Estacionamento: Sim')
-    expect(page).to have_text('Diária: R$ 500')
+    expect(page).to have_text('Diária: R$ 500,00')
+  end
+
+  it 'and view property details and return to home page' do
+    Property.create({ title: 'Casa com quintal em Copacabana',
+                      description: 'Excelente casa, recém reformada com 2 vagas de garagem',
+                      rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500 })
+    Property.create({ title: 'Cobertura em Manaus',
+                      description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
+                      rooms: 5, parking_slot: false })
+
+    visit root_path
+    click_on 'Casa com quintal em Copacabana'
+    click_on 'Voltar'
+
+    expect(current_path).to eq root_path
+    expect(page).to have_text('Casa com quintal em Copacabana')
+    expect(page).to have_text('Cobertura em Manaus')
   end
 end
