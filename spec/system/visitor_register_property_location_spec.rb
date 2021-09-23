@@ -35,5 +35,4 @@ describe 'Visitor registry Property Location' do
     expect(page).to have_css('h1', text: 'Cadastrar Regiões:')
     expect(page).to have_content('A região deve ser única')
   end
-
 end
