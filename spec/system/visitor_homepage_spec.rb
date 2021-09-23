@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 
 describe 'Visitor visit homepage' do

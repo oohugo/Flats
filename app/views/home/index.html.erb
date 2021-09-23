@@ -3,11 +3,17 @@
 
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
-<% @properties.each do |p| %>
-	<%= link_to(p.title, property_path(p.id)) %>
-	<%= p.description %>
-	Quartos: <%= p.rooms%>
-<% end %>
-<% if @properties.empty? %>
-	<%= 'Nenhum imóvel disponível' %>
-<% end %>
+<nav>
+	<%= link_to 'Cadastrar Imóvel', new_property_path %>
+</nav>
+
+<div>
+	<% @properties.each do |p| %>
+		<%= link_to(p.title, property_path(p.id)) %>
+		<%= p.description %>
+		Quartos: <%= p.rooms%>
+	<% end %>
+	<% if @properties.empty? %>
+		<%= 'Nenhum imóvel disponível' %>
+	<% end %>
+</div>
