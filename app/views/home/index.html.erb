@@ -5,7 +5,8 @@
 
 <nav>
 	<%= link_to 'Cadastrar Imóvel', new_property_path %> |
-	<%= link_to 'Cadastrar Tipos de Imoveis', new_property_type_path %>
+	<%= link_to 'Cadastrar Tipos de Imoveis', new_property_type_path %> |
+	<%= link_to 'Cadastrar Região', new_property_location_path %>
 </nav>
 
 <div>
@@ -23,6 +24,14 @@
 	<ul>
 		<% @property_types.each do |p_t| %>
 			<li><%= p_t.name %></li>
+		<% end %>
+	</ul>
+</div>
+<div>
+	<h4>Regiões:</h4>
+	<ul>
+		<% @property_locations.each do |p_l| %>
+			<li><%= p_l.name %></li>
 		<% end %>
 	</ul>
 </div>

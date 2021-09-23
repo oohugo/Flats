@@ -1,13 +1,12 @@
-<h1>Cadastrar um novo Tipo de Imóvel</h1>
 
-<%= form_with(model: @p_type) do |f| %>
+<h1>Cadastrar Regiões:</h1>
+<%= form_with(model: @location) do |f| %>
 	<div>
 		<%= f.label :name, 'Nome' %>
 		<%= f.text_field :name %>
 	</div>
 	<%= f.submit 'Enviar' %>
 <% end %>
-
 <div>
 	<% flash.each do |name, msg| %>
 		<%= content_tag :p, msg, class: name %>

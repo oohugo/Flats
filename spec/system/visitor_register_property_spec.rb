@@ -21,6 +21,5 @@ describe 'Visitor registry property' do
     expect(page).to have_content('Aceita Pets: Sim')
     expect(page).to have_content('Estacionamento: Sim')
     expect(page).to have_content('Diária: R$ 200,00')
-
   end
 end

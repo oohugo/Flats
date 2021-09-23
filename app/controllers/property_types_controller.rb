@@ -4,7 +4,13 @@ class PropertyTypesController < ApplicationController
   end
 
   def create
-    PropertyType.create(params.require(:property_type).permit(:name))
-    redirect_to root_path
+    @p_t = PropertyType.new(params.require(:property_type).permit(:name))
+    if @p_t.valid?
+      @p_t.save
+      redirect_to root_path
+    else
+      flash.now[:alert] = @p_t.errors.messages
+      render action: 'new'
+    end
   end
 end
