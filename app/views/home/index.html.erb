@@ -4,7 +4,8 @@
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
 <nav>
-	<%= link_to 'Cadastrar Imóvel', new_property_path %>
+	<%= link_to 'Cadastrar Imóvel', new_property_path %> |
+	<%= link_to 'Cadastrar Tipos de Imoveis', new_property_type_path %>
 </nav>
 
 <div>
@@ -16,4 +17,12 @@
 	<% if @properties.empty? %>
 		<%= 'Nenhum imóvel disponível' %>
 	<% end %>
+</div>
+<div>
+	<h4>Tipos de Imóveis:</h4>
+	<ul>
+		<% @property_types.each do |p_t| %>
+			<li><%= p_t.name %></li>
+		<% end %>
+	</ul>
 </div>

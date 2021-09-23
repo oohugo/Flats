@@ -1,0 +1,9 @@
+<h1>Cadastrar um novo Tipo de Imóvel</h1>
+
+<%= form_with(model: @p_type) do |f| %>
+	<div>
+		<%= f.label :name, 'Nome' %>
+		<%= f.text_field :name %>
+	</div>
+	<%= f.submit 'Enviar' %>
+<% end %>
