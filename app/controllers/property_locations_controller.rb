@@ -5,8 +5,7 @@ class PropertyLocationsController < ApplicationController
 
   def create
     @location = PropertyLocation.new(params.require(:property_location).permit(:name))
-    if @location.valid?
-      @location.save
+    if @location.save
       redirect_to root_path
     else
       flash.now[:alert] = @location.errors.messages

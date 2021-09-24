@@ -1,6 +1,6 @@
 <h1>Cadastrar um novo Tipo de Imóvel</h1>
 
-<%= form_with(model: @p_type) do |f| %>
+<%= form_with(model: @property_type) do |f| %>
 	<div>
 		<%= f.label :name, 'Nome' %>
 		<%= f.text_field :name %>
@@ -8,8 +8,10 @@
 	<%= f.submit 'Enviar' %>
 <% end %>
 
-<div>
-	<% flash.each do |name, msg| %>
-		<%= content_tag :p, msg, class: name %>
-	<% end %>
-</div>
+<% if @property_type.errors.any? %>
+	<ul>
+		<% @property_type.errors.full_messages.each do |error| %>
+			<li><%= error %></li>
+		<% end %>
+	</ul>
+<% end %>
