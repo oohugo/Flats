@@ -12,4 +12,8 @@ class PropertyLocationsController < ApplicationController
       render action: 'new'
     end
   end
+
+  def show
+    @property_location = PropertyLocation.find(params[:id])
+  end
 end

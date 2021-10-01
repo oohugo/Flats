@@ -3,13 +3,15 @@ require 'rails_helper'
 
 describe 'Visitor view Home' do
   it 'and view properties' do
-    Property.create({ title: 'casa com quintal em Copacabana',
-                      description: 'Excelente casa, recem formada com 2 vagas de caragem',
-                      rooms: 3 })
+    property_type = PropertyType.create!(name: 'Casa')
+    property_location = PropertyLocation.create!(name: 'Brasil')
+    Property.create!({ title: 'casa com quintal em Copacabana', bathrooms: 2, daily_rate: 500,
+                       description: 'Excelente casa, recem formada com 2 vagas de caragem',
+                       rooms: 3, property_type: property_type, property_location: property_location })
 
-    Property.create({ title: 'coberura em Manaus',
-                      description: 'Cobertura de 300m2, churrascaria',
-                      rooms: 5 })
+    Property.create!({ title: 'coberura em Manaus', bathrooms: 1, daily_rate: 5000,
+                       description: 'Cobertura de 300m2, churrascaria',
+                       rooms: 5, property_type: property_type, property_location: property_location })
 
     visit root_path
     expect(page).to have_content('casa com quintal em Copacabana')
@@ -26,9 +28,11 @@ describe 'Visitor view Home' do
   end
 
   it 'and view property details' do
-    Property.create({ title: 'Casa com quintal em Copacabana',
-                      description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                      rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500 })
+    property_type = PropertyType.create!(name: 'Casa')
+    Property.create!({ title: 'Casa com quintal em Copacabana',
+                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
+                       rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500,
+                       property_type: property_type, property_location: PropertyLocation.new(name: 'Sudeste') })
 
     visit root_path
     click_on 'Casa com quintal em Copacabana'
@@ -40,15 +44,21 @@ describe 'Visitor view Home' do
     expect(page).to have_content('Aceita Pets: Sim')
     expect(page).to have_content('Estacionamento: Sim')
     expect(page).to have_content('Diária: R$ 500,00')
+    expect(page).to have_content('Tipo: Casa')
   end
 
   it 'and view property details and return to home page' do
-    Property.create({ title: 'Casa com quintal em Copacabana',
-                      description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                      rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500 })
-    Property.create({ title: 'Cobertura em Manaus',
-                      description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
-                      rooms: 5, parking_slot: false })
+    property_type = PropertyType.create!(name: 'Casa')
+    property_location = PropertyLocation.create!(name: 'Brasil')
+    Property.create!({ title: 'Casa com quintal em Copacabana',
+                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
+                       rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500,
+                       property_type: property_type, property_location: property_location })
+    Property.create!({ title: 'Cobertura em Manaus',
+                       description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
+                       bathrooms: 2, pets: true, daily_rate: 500,
+                       rooms: 5, parking_slot: false, property_type: property_type,
+                       property_location: property_location })
 
     visit root_path
     click_on 'Casa com quintal em Copacabana'

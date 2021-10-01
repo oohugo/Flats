@@ -1,0 +1,16 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      property: Propriedade
+    attributes:
+      property:
+        title: Título
+        description: Descrição
+        rooms: Número de quartos
+        bathrooms: Número de banheiros
+        daily_rate: Taxa de aluguel
+        property_type: Tipo de propriedade
+    properties:
+      new:
+        title: 'Cadastro de Imóvel'

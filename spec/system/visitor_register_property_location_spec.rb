@@ -21,7 +21,7 @@ describe 'Visitor registry Property Location' do
     click_on 'Enviar'
 
     expect(page).to have_css('h1', text: 'Cadastrar Regiões:')
-    expect(page).to have_content('Nome deve estar preenchido')
+    expect(page).to have_content('não pode ficar em branco')
   end
 
   it 'name must be unique' do
@@ -33,6 +33,6 @@ describe 'Visitor registry Property Location' do
     click_on 'Enviar'
 
     expect(page).to have_css('h1', text: 'Cadastrar Regiões:')
-    expect(page).to have_content('A região deve ser única')
+    expect(page).to have_content('já está em uso')
   end
 end

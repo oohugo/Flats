@@ -21,17 +21,21 @@
 </div>
 <div>
 	<h4>Tipos de Imóveis:</h4>
-	<ul>
-		<% @property_types.each do |p_t| %>
-			<li><%= p_t.name %></li>
-		<% end %>
-	</ul>
+	<nav>
+		<ul>
+			<% @property_types.each do |property_type| %>
+				<li><%= link_to property_type.name, property_type %></li>
+			<% end %>
+		</ul>
+	</nav>
 </div>
 <div>
 	<h4>Regiões:</h4>
-	<ul>
-		<% @property_locations.each do |p_l| %>
-			<li><%= p_l.name %></li>
-		<% end %>
-	</ul>
+	<nav>
+		<ul>
+			<% @property_locations.each do |property_location| %>
+				<li><%= link_to property_location.name, property_location %></li>
+			<% end %>
+		</ul>
+	</nav>
 </div>

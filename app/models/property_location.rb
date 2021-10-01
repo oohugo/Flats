@@ -1,5 +1,5 @@
-# coding: utf-8
 class PropertyLocation < ApplicationRecord
-  validates :name, presence: { message: 'Nome deve estar preenchido' }
-  validates :name, uniqueness: { case_sensitive: false, message: 'A região deve ser única' }
+  has_many :properties
+  validates :name, presence: true
+  validates :name, uniqueness: { case_sensitive: false }
 end

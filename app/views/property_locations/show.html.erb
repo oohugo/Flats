@@ -1,0 +1,7 @@
+<h1>Imóveis da região <%= @property_location.name %> </h1>
+
+<p>
+	<% @property_location.properties.each do |property| %>
+		<%= link_to property.title, property %>
+	<% end %>
+</p>

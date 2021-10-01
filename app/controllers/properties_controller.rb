@@ -8,10 +8,10 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    property = Property.create(
+    property = Property.create!(
       params.require(:property).permit(
         :title, :description, :rooms, :bathrooms, :pets,
-        :parking_slot, :daily_rate
+        :parking_slot, :daily_rate, :property_type_id, :property_location_id
       )
     )
     redirect_to property

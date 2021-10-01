@@ -3,6 +3,9 @@ require 'rails_helper'
 
 describe 'Visitor registry property' do
   it 'successifully' do
+    PropertyType.create!(name: 'Casa')
+    PropertyLocation.create!(name: 'Sul')
+
     visit root_path
     click_on 'Cadastrar Imóvel'
     fill_in 'Título', with: 'Casa em Florianópolis'
@@ -10,6 +13,8 @@ describe 'Visitor registry property' do
     fill_in 'Quartos', with: '3'
     fill_in 'Banheiros', with: '2'
     fill_in 'Diária', with: '200'
+    select 'Casa', from: 'Tipo'
+    select 'Sul', from: 'Região'
     check 'Aceita Pets'
     check 'Vaga de Estacionamento'
     click_on 'Enviar'
@@ -21,5 +26,6 @@ describe 'Visitor registry property' do
     expect(page).to have_content('Aceita Pets: Sim')
     expect(page).to have_content('Estacionamento: Sim')
     expect(page).to have_content('Diária: R$ 200,00')
+    expect(page).to have_content('Região: Sul')
   end
 end
