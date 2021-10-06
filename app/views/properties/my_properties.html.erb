@@ -1,0 +1,15 @@
+
+<% if @properties.empty? %>
+	<p>Você ainda não cadastrou imóveis</p>
+		<%= link_to 'Cadastre seu imóvel agora', new_property_path %>
+<% else %>
+	<nav>
+		<ul>
+			<% @properties.each do | property | %>
+				<li>
+					<%= link_to property.title, property %>
+				</li>
+			<% end %>
+		</ul>
+	</nav>
+<% end %>

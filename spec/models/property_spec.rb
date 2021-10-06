@@ -15,15 +15,15 @@ describe Property do
       end
       it 'description must be present' do
         property.valid?
-        expect(property.errors.full_messages_for(:rooms)).to include('Número de quartos não pode ficar em branco')
+        expect(property.errors.full_messages_for(:rooms)).to include('Quartos não pode ficar em branco')
       end
       it 'bathrooms must be present' do
         property.valid?
-        expect(property.errors.full_messages_for(:bathrooms)).to include('Número de banheiros não pode ficar em branco')
+        expect(property.errors.full_messages_for(:bathrooms)).to include('Banheiros não pode ficar em branco')
       end
       it 'daily_rate must be present' do
         property.valid?
-        expect(property.errors.full_messages_for(:daily_rate)).to include('Taxa de aluguel não pode ficar em branco')
+        expect(property.errors.full_messages_for(:daily_rate)).to include('Diária não pode ficar em branco')
       end
       it 'property_type must be present' do
         property.valid?

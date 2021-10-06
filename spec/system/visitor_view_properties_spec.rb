@@ -7,19 +7,17 @@ describe 'Visitor view Home' do
     property_location = PropertyLocation.create!(name: 'Brasil')
     Property.create!({ title: 'casa com quintal em Copacabana', bathrooms: 2, daily_rate: 500,
                        description: 'Excelente casa, recem formada com 2 vagas de caragem',
-                       rooms: 3, property_type: property_type, property_location: property_location })
+                       rooms: 3, property_type: property_type, property_location: property_location,
+                       property_owner: PropertyOwner.create!(email: 'joao@email.com', password: '1234567') })
 
     Property.create!({ title: 'coberura em Manaus', bathrooms: 1, daily_rate: 5000,
                        description: 'Cobertura de 300m2, churrascaria',
-                       rooms: 5, property_type: property_type, property_location: property_location })
+                       rooms: 5, property_type: property_type, property_location: property_location,
+                       property_owner: PropertyOwner.create!(email: 'maria@email.com', password: '1234567') })
 
     visit root_path
     expect(page).to have_content('casa com quintal em Copacabana')
     expect(page).to have_content('Excelente casa, recem formada com 2 vagas de caragem')
-    expect(page).to have_content('Quartos: 3')
-    expect(page).to have_content('coberura em Manaus')
-    expect(page).to have_content('Cobertura de 300m2, churrascaria')
-    expect(page).to have_content('Quartos: 5')
   end
 
   it 'and theres no property available' do
@@ -32,7 +30,8 @@ describe 'Visitor view Home' do
     Property.create!({ title: 'Casa com quintal em Copacabana',
                        description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                        rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500,
-                       property_type: property_type, property_location: PropertyLocation.new(name: 'Sudeste') })
+                       property_type: property_type, property_location: PropertyLocation.new(name: 'Sudeste'),
+                       property_owner: PropertyOwner.create!(email: 'joao@email.com', password: '1234567') })
 
     visit root_path
     click_on 'Casa com quintal em Copacabana'
@@ -45,6 +44,7 @@ describe 'Visitor view Home' do
     expect(page).to have_content('Estacionamento: Sim')
     expect(page).to have_content('Diária: R$ 500,00')
     expect(page).to have_content('Tipo: Casa')
+    expect(page).to have_content('Imóvel de: joao@email.com')
   end
 
   it 'and view property details and return to home page' do
@@ -53,12 +53,14 @@ describe 'Visitor view Home' do
     Property.create!({ title: 'Casa com quintal em Copacabana',
                        description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                        rooms: 3, parking_slot: true, bathrooms: 2, pets: true, daily_rate: 500,
-                       property_type: property_type, property_location: property_location })
+                       property_type: property_type, property_location: property_location,
+                       property_owner: PropertyOwner.create!(email: 'joao@email.com', password: '1234567') })
     Property.create!({ title: 'Cobertura em Manaus',
                        description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
                        bathrooms: 2, pets: true, daily_rate: 500,
                        rooms: 5, parking_slot: false, property_type: property_type,
-                       property_location: property_location })
+                       property_location: property_location,
+                       property_owner: PropertyOwner.create!(email: 'maria@email.com', password: '1234567') })
 
     visit root_path
     click_on 'Casa com quintal em Copacabana'

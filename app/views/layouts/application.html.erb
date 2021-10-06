@@ -11,6 +11,25 @@
   </head>
 
   <body>
+	  <h1>Flats</h1>
+	  <h3>Boas vindas ao sistema de locação de apartamentos</h3>
+	  <nav>
+		  <% if property_owner_signed_in? %>
+			  <ul>
+			  <li><%= link_to 'Cadastrar Imóvel', new_property_path %></li>
+			  <li><%= current_property_owner.email %></li>
+			  <li><%= link_to 'Meus Imóveis', my_properties_properties_path %></li>
+			  <li><%= link_to 'Logout', destroy_property_owner_session_path, method: :delete %></li>
+			  </ul>
+		  <% else %>
+			  <ul>
+				  <li><%= link_to 'Entrar', new_property_owner_session_path %></li>
+				  <li><%= link_to 'Cadastro como Proprietário', new_property_owner_registration_path %>
+			  </ul>
+		  <% end %>
+	  </nav>
+	  <p><%= notice %></p>
+	  <p><%= alert %></p>
     <%= yield %>
   </body>
 </html>

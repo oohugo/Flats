@@ -4,7 +4,7 @@
 
 <% if @property.errors.any? %>
 	<ul>
-		<% @property.errors.each do |error| %>
+		<% @property.errors.full_messages.each do |error| %>
 			<li> <%= error %> </li>
 		<% end %>
 	</ul>

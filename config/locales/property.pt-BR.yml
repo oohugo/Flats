@@ -7,10 +7,10 @@ pt-BR:
       property:
         title: Título
         description: Descrição
-        rooms: Número de quartos
-        bathrooms: Número de banheiros
-        daily_rate: Taxa de aluguel
+        rooms: Quartos
+        bathrooms: Banheiros
+        daily_rate: Diária
         property_type: Tipo de propriedade
     properties:
       new:
-        title: 'Cadastro de Imóvel'
+        title: Cadastro de Imóvel

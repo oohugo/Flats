@@ -16,6 +16,8 @@
 	<dd><%= @property.property_type.name %></dd>
 	<dt>Região:</dt>
 	<dd><%= @property.property_location.name %></dd>
+	<dt>Imóvel de: </dt>
+	<dd><%= @property.property_owner.email %></dd>
 </dl>
 
 <%= link_to("Voltar", root_path) %>
